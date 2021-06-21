@@ -10,7 +10,7 @@ const invite: string = process.argv[2] || config.invite;
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 12);
 
-const regex: RegExp = /[\d]{6}/gm;
+const regex: RegExp = /(\d-)+\d/gm;
 const query = gql`
   query getEmails($username: String!) {
     emails(username: $username) {
@@ -75,14 +75,14 @@ const run = async () => {
       if (data.emails.length == 0) {
         return await getOTP();
       } else {
-        return regex.exec(data.emails[0].stripped_text.replaceAll(/\s/g, ''))[0];
+        return data.emails[0]["stripped_text"].split("\n")[9];
       }
     };
 
     const otp = await retry(getOTP);
     console.log(`[${i}] Obtained OTP:`, otp);
 
-    const nums = otp.split('');
+    const nums = otp.split('-');
     await page.type(`#verify-code-form > div:nth-child(1) > div:nth-child(1) > input`, nums[0]);
     await page.type(`#verify-code-form > div:nth-child(1) > div:nth-child(2) > input`, nums[1]);
     await page.type(`#verify-code-form > div:nth-child(1) > div:nth-child(3) > input`, nums[2]);
