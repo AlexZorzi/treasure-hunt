@@ -6,7 +6,7 @@ Get 800GB free on Treasure Cloud
 
 ### Get Started
 
-1. [Fork](https://github.com/xuac/treasure-hunt/fork) the repository
+1. [Fork](https://github.com/AlexZorzi/treasure-hunt/fork) the repository
 2. Go to the Actions tab
 3. Click on the `Hunt` workflow under `All workflows`
 4. Click on the `Run Workflow ▼` dropdown
@@ -21,7 +21,7 @@ These instructions are for running on Linux. You'll need NodeJS 15 or above.
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/xuac/treasure-hunt.git
+   git clone https://github.com/AlexZorzi/treasure-hunt.git
    cd treasure-hunt
    ```
 
